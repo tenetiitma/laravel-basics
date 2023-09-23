@@ -12,4 +12,9 @@ class Book extends Model
 
     public $timestamps = false;
 
+
+    public function author(): BelongsToMany
+    {
+        return $this->belongsToMany(Author::class, 'book_authors');
+    }
 }

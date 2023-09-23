@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Author;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/test', function(){
+    //siia kirjuta mida iganes
+
+    // return Author::first()->books;
+    // return Author::with('books')->first();
+    // dd()
 });
