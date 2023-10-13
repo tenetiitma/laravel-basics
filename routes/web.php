@@ -1,6 +1,7 @@
 <?php
 
-use App\Models\Author;
+use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\ClientController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,10 +19,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test', function(){
-    //siia kirjuta mida iganes
+Route::get('/test-1', function(){
 
+    return 'tere';
     // return Author::first()->books;
     // return Author::with('books')->first();
     // dd()
 });
+
+// Route::get('/authors', [AuthorController::class, 'index']);
+
+Route::resource('authors', AuthorController::class);
+Route::resource('clients', ClientController::class);
+
