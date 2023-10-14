@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,16 +20,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test-1', function(){
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-    return 'tere';
-    // return Author::first()->books;
-    // return Author::with('books')->first();
-    // dd()
+
+Route::middleware('auth')->group(function () {
+    
+    Route::resource('clients', ClientController::class);
+    Route::resource('authors', AuthorController::class);
+
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Route::get('/authors', [AuthorController::class, 'index']);
-
-Route::resource('authors', AuthorController::class);
-Route::resource('clients', ClientController::class);
-
+require __DIR__.'/auth.php';
