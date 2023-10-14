@@ -102,7 +102,9 @@ Route::get('/test', function(){
 
 - _As an **authenticated** user i should see navigation buttons for authors, books, clients and orders and by clicking on the button i should be navigated to the respective resources index view._
 
-1. **Create index views for the following resources:**
+### Use the authors page as an example and create similar pages for Books, Clients and Orders.
+
+1. **Create index views for:**
     - [x] Authors
     - [ ] Books
     - [ ] Clients
@@ -111,8 +113,6 @@ Route::get('/test', function(){
 2. **Render the views using the correct controller@method.**
 
 3. **Add navigation links for all the resources.**
-
-_Use the authors as an example. (latest code in main branch)_
 
 ## Refrences
 - [Actions Handled By Resource Controller](https://laravel.com/docs/10.x/controllers#actions-handled-by-resource-controller)
