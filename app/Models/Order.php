@@ -10,6 +10,8 @@ class Order extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     public function book(): BelongsTo
     {
         return $this->BelongsTo(Book::class);

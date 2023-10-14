@@ -11,6 +11,8 @@ class Client extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     public function books(): HasManyThrough
     {
         return $this->hasManyThrough(Book::class, Order::class, secondKey: 'id', secondLocalKey: 'book_id');
