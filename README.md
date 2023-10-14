@@ -58,13 +58,13 @@ To drop all tables before migrating:
 Create model relationships for the followng scenarios:
 - [x] As a user i want to see books with authors.
 - [x] As a user i want to see authors books.
-- [ ] As a user i want to see client orders.
-- [ ] As a user i want to see book orders.
-- [ ] As a user i want to see what book was orderd.
-- [ ] As a user i want to see the client who made the order.
+- [x] As a user i want to see client orders.
+- [x] As a user i want to see book orders.
+- [x] As a user i want to see what book was orderd.
+- [x] As a user i want to see the client who made the order.
 
 Extra:
-- [ ] As a user i want to see clients books.
+- [x] As a user i want to see clients books.
 
 ### To test if the relationships work we can use Artisan console (REPL) or create a test route to visualize the results in the browser enviroment.
 
@@ -89,3 +89,39 @@ Route::get('/test', function(){
 ### Refrences
 - [Eloquent: Relationships](https://laravel.com/docs/10.x/eloquent-relationships)
 - [dd()](https://laravel.com/docs/10.x/helpers#method-dd)
+
+## 3. Resource controllers & routes
+
+**??** If your code repo is not up to date, pull the latest changes from the main branch.
+
+### Context
+- _As an **authenticated** user i want to see a list of books, authors, clients and orders on the admin panel._
+
+    - _The lists should include relavant data for the given resource & edit, delete buttons._
+    - _The lists should be paginated and only show 20 records per page._
+
+- _As an **authenticated** user i should see navigation buttons for authors, books, clients and orders and by clicking on the button i should be navigated to the respective resources index view._
+
+1. **Create index views for the following resources:**
+    - [x] Authors
+    - [ ] Books
+    - [ ] Clients
+    - [ ] Orders
+
+2. **Render the views using the correct controller@method.**
+
+3. **Add navigation links for all the resources.**
+
+_Use the authors as an example. (latest code in main branch)_
+
+## Refrences
+- [Actions Handled By Resource Controller](https://laravel.com/docs/10.x/controllers#actions-handled-by-resource-controller)
+- [Creating & Rendering Views](https://laravel.com/docs/10.x/views#creating-and-rendering-views)
+- [Named Routes](https://laravel.com/docs/10.x/routing#named-routes)
+- [Paginating Eloquent Results](https://laravel.com/docs/10.x/pagination#paginating-eloquent-results)
+- [Blade Templates](https://laravel.com/docs/10.x/blade#main-content)
+
+
+
+
+
