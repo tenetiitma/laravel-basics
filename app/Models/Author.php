@@ -10,6 +10,8 @@ class Author extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     public function books(): BelongsToMany
     {
         return $this->belongsToMany(Book::class, 'book_authors');
