@@ -33,12 +33,27 @@
                             <option value="eBook" {{ $book -> type == 'ebook' ? "selected" : "" }}>e-Book</option>
                         </select>
 
-
                         <div class="mt-4 space-x-2">
                             <x-primary-button>{{ __('Save') }}</x-primary-button>
                             <a href="{{ route('books.index') }}">{{ __('Cancel') }}</a>
                         </div>
                     </form>
+
+                     <x-input-label value="Authors:" class="pt-6" />
+                        @foreach ($book->authors as $author)
+                                <div class="flex border-b justify-between items-center">
+                                <p>{{ $author -> first_name }} {{ $author -> last_name }}<p>
+                                <div>
+                                    <form method="POST" action="{{ route('book.detach.author', $author) }}">
+                                        @csrf
+                                        @method('delete')
+                                        <x-danger-button onclick="event.preventDefault(); this.closest('form').submit();">
+                                            Delete
+                                        </x-danger-button>
+                                    </form>
+                                </div>
+                            </div>
+                        @endforeach
     </div>
                 </div>
             </div>
