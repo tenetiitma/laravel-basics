@@ -65,14 +65,14 @@ class BookController extends Controller
             $validated = $request->validate([
             'title' => 'required|string|max:255',
             'release_date' => 'required|integer|between:1901,2155',
-            'price' => 'required|decimal:2',
+            'price' => ['required', 'regex:/^\d+(,\d|,\d{2})?$/i'],
+            'type' => 'required',
         ],
         [
             'release_date.between' => 'The release year field must be between 1901 - 2155',
             'release_date.required' => 'Please insert release year between 1901 - 2155',
         ]
     );
-
         $book -> update($validated);
 
         return redirect(route('books.index'));

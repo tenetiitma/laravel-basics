@@ -12,7 +12,7 @@
                 <div class="max-w-2xl mx-auto p-4 sm:p-6 lg:p-8">
                     <form method="POST" action="{{ route('authors.update', $author) }}">
                         @csrf
-                        @method('patch')
+
                         <x-text-input name="first_name" value="{{ old('first_name', $author->first_name) }}" ></x-text-input>
                         <x-text-input name="last_name" value="{{ old('last_name', $author->last_name) }}" ></x-text-input>
                         <x-input-error :messages="$errors->get('message')" class="mt-2" />

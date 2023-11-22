@@ -25,6 +25,15 @@
                         <x-input-label value="Price:"/>
                         <x-text-input name="price" value="{{ old('price', $book->price) }}" />
                         <x-input-error :messages="$errors->get('price')" class="mt-2" />
+
+                        <x-input-label value="Type:" for="type"/>
+                        <select name="type" value="{{ old('type', $book->type) }}" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
+                            <option value="new" {{ $book -> type == 'new' ? "selected" : "" }}>New</option>
+                            <option value="used" {{ $book -> type == 'used' ? "selected" : "" }}>Used</option>
+                            <option value="eBook" {{ $book -> type == 'ebook' ? "selected" : "" }}>e-Book</option>
+                        </select>
+
+
                         <div class="mt-4 space-x-2">
                             <x-primary-button>{{ __('Save') }}</x-primary-button>
                             <a href="{{ route('books.index') }}">{{ __('Cancel') }}</a>
