@@ -15,10 +15,9 @@ class AuthorController extends Controller
     public function index()
     {
         return view('authors.index', [
-            'authors' => Author::paginate(20)
+            'authors' => Author::orderBy("first_name")->paginate(20),
         ]);
 
-        // return Author::paginate(10);
     }
 
     /**
@@ -26,7 +25,7 @@ class AuthorController extends Controller
      */
     public function create()
     {
-        //
+        return view('authors.add');
     }
 
     /**
@@ -34,7 +33,20 @@ class AuthorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate(
+            [
+                'first_name' => 'required|string|max:255',
+                'last_name' => 'required|string|max:255',
+            ],
+            [
+                'first_name.required' => 'Please insert first name',
+                'last_name.required' => 'Please insert last name',
+            ]
+        );
+
+        Author::create($validated);
+
+        return redirect(route('authors.index'));
     }
 
     /**
@@ -64,7 +76,7 @@ class AuthorController extends Controller
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
         ]);
-        $author -> update($validated);
+        $author->update($validated);
         return redirect(route('authors.index'));
     }
 
@@ -73,7 +85,7 @@ class AuthorController extends Controller
      */
     public function destroy(Author $author)
     {
-        $author -> delete();
+        $author->delete();
         return redirect('/authors');
     }
 }
